@@ -1,0 +1,1 @@
+ideal de criar meu portfolio usando next, chakra e framer motion
