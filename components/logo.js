@@ -12,7 +12,7 @@ height: 30px;
 line-height: 20px;
 padding: 10px;
 
-&:hover img{
+&:hover img {
     transform: rotate(20deg);
 }
 ` 
@@ -22,7 +22,6 @@ const Logo = () => {
     
     return (
         <Link href="/">
-            <a>
                 <LogoBox>
                     <Image src={footPrintImg} width={20} height={20} alt="logo" />
                     <Text 
@@ -34,7 +33,6 @@ const Logo = () => {
                     </Text>
 
                 </LogoBox>
-            </a>
         </Link>
     )
 } 
