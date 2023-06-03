@@ -1,20 +1,97 @@
-import { Container, Box, Heading } from "@chakra-ui/react"
+import React from 'react';
+import { Container, Box, Heading, Text, useColorMode, Flex } from '@chakra-ui/react';
+import { StarIcon } from '@chakra-ui/icons';
 
-const Page = () => {
-    return(
-        <Container>
-            <Box borderRadius="lg" bg="red" p={3} mb={6} aling="center">
-                Hello, I&apos;m a full-stack developer based in Brazil!
-            </Box>
+const skills = [
+  { name: 'JavaScript', level: 4 },
+  { name: 'React', level: 5 },
+  { name: 'Node.js', level: 3 },
+  { name: 'HTML/CSS', level: 4 },
+  { name: 'C#', level: 3 },
+  { name: 'Bootstrap', level: 4 }
+];
 
-            <Box display={{md:'flex'}}>
-                <Box flexGrow={1}>
-                    <Heading as="h2" variant="page-title">
-                        Lucas Bertolot
-                    </Heading>
-                    <p>Full stack Developer</p>        
-                </Box>
-            </Box>
-        </Container>
-    )
-}
+const Skill = ({ name, level }) => {
+  const { colorMode } = useColorMode();
+
+  const renderStars = () => {
+    const stars = [];
+  
+    for (let i = 1; i <= 5; i++) {
+      const starColor = i <= level ? (colorMode === 'light' ? 'yellow.500' : 'yellow.300') : 'gray.300';
+  
+      stars.push(
+        <StarIcon
+          key={i}
+          boxSize={4}
+          color={starColor}
+          mr={1}
+        />
+      );
+    }
+  
+    return stars;
+  };
+  
+
+  return (
+    <Box>
+      <Text
+        m={1}
+        px={3}
+        py={1}
+        bg={colorMode === 'light' ? 'blue.500' : 'blue.200'}
+        color={colorMode === 'light' ? 'white' : 'blue.800'}
+        borderRadius="md"
+        boxShadow={colorMode === 'light' ? 'md' : 'none'}
+        fontWeight="bold"
+        _hover={{ bg: colorMode === 'light' ? 'blue.600' : 'blue.300' }}
+        display="inline-block"
+      >
+        {name}
+      </Text>
+      <Box display="inline-block" ml={2}>
+        {renderStars()}
+      </Box>
+    </Box>
+  );
+};
+
+const Home = () => {
+  const { colorMode } = useColorMode();
+
+  return (
+    <Container maxW="container.md">
+      <Flex
+        direction={{ base: 'column', md: 'row' }}
+        justifyContent={{ base: 'center', md: 'space-between' }}
+        alignItems={{ md: 'center' }}
+      >
+        <Box textAlign="left">
+          <Heading as="h3" size="lg" mb={4}>
+            Skills
+          </Heading>
+          <Box>
+            {skills.map((skill) => (
+              <Skill key={skill.name} name={skill.name} level={skill.level} />
+            ))}
+          </Box>
+        </Box>
+        <Box textAlign="center" flex={1}>
+          <Heading as="h2" size="lg" mb={4}>
+            About Me
+          </Heading>
+          <Text>
+            I am an internet enthusiast who has always enjoyed spending time online. Over the years, I have decided to
+            pursue a career in this field and have developed skills as a front-end developer. I am passionate about
+            creating engaging and dynamic web experiences, and I am always striving to stay up-to-date with the latest
+            technologies and trends. I am excited to continue growing in this field and contribute to innovative
+            projects.
+          </Text>
+        </Box>
+      </Flex>
+    </Container>
+  );
+};
+
+export default Home;
