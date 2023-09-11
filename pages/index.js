@@ -3,12 +3,13 @@ import { Container, Box, Heading, Text, useColorMode, Flex } from '@chakra-ui/re
 import { StarIcon } from '@chakra-ui/icons';
 
 const skills = [
-  { name: 'JavaScript', level: 4 },
-  { name: 'React', level: 5 },
-  { name: 'Node.js', level: 3 },
-  { name: 'HTML/CSS', level: 4 },
+  { name: 'JavaScript', level: 3 },
+  { name: 'TypeScript', level: 2},
+  { name: 'React', level: 3 },
+  { name: 'Node.js', level: 2 },
+  { name: 'HTML/CSS', level: 3 },
   { name: 'C#', level: 3 },
-  { name: 'Bootstrap', level: 4 }
+  { name: 'Bootstrap', level: 2 }
 ];
 
 const Skill = ({ name, level }) => {
@@ -62,13 +63,19 @@ const Home = () => {
 
   return (
     <Container maxW="container.md">
+      <Heading as="h1" size="2xl" mb={4}>
+        Lucas Bertolot
+      </Heading>
+      <Text fontSize="xl" color="gray.600" mb={6}>
+        Fullstack Developer
+      </Text>
       <Flex
         direction={{ base: 'column', md: 'row' }}
         justifyContent={{ base: 'center', md: 'space-between' }}
         alignItems={{ md: 'center' }}
       >
         <Box textAlign="left">
-          <Heading as="h3" size="lg" mb={4}>
+          <Heading as="h3" size="lg" mb={1}>
             Skills
           </Heading>
           <Box>
@@ -95,3 +102,4 @@ const Home = () => {
 };
 
 export default Home;
+
